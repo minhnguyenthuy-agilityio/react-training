@@ -110,21 +110,26 @@ export const TaskCard = ({
 
       <Modal isOpen={isOpenPopup} onClose={onClosePopup}>
         <ModalOverlay />
-        <ModalContent alignItems="center">
+        <ModalContent p={4}>
           <ModalHeader>Are you sure ?</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
+          <ModalBody my={6}>
             <Text>
               Do you really want to delete these task ? This process cannot be
               undone
             </Text>
           </ModalBody>
 
-          <ModalFooter>
-            <Button colorScheme="primary" mr={3} onClick={onClosePopup}>
+          <ModalFooter gap={3}>
+            <Button
+              p={6}
+              bg="gray"
+              colorScheme="secondary"
+              onClick={onClosePopup}
+            >
               Cancel
             </Button>
-            <Button colorScheme="error" mr={3} onClick={onDeleteTask}>
+            <Button p={6} colorScheme="error" onClick={onDeleteTask}>
               Delete
             </Button>
           </ModalFooter>

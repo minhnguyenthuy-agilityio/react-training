@@ -27,22 +27,30 @@ export const TableContent = ({ keyword }: TableContentProps) => {
 
     return (
       <>
-        {keyword ? (
-          <SearchList listSearch={tasks} />
-        ) : (
-          <Box>
-            <TaskList name="time limit" tasks={withinOneDay} />
-            <TaskList name="new task" tasks={moreThanOneDay} />
+        {isLoading ? (
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            height="100%"
+          >
+            <Spinner />
           </Box>
+        ) : (
+          <>
+            {keyword ? (
+              <SearchList listSearch={tasks} />
+            ) : (
+              <Box>
+                <TaskList name="time limit" tasks={withinOneDay} />
+                <TaskList name="new task" tasks={moreThanOneDay} />
+              </Box>
+            )}
+          </>
         )}
       </>
     );
   };
 
-  return (
-    <>
-      {renderTaskList()}
-      {isLoading && <Spinner />}
-    </>
-  );
+  return <>{renderTaskList()}</>;
 };

@@ -7,6 +7,7 @@ import {
   FormLabel,
   Input,
   Modal,
+  ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalFooter,
@@ -82,6 +83,8 @@ export const TaskDataEntryForm = ({
     const fieldName = event.target.name;
     const fieldValue = event.target.value;
 
+    console.log(fieldValue);
+
     setFormData((prevFormData) => ({
       ...prevFormData,
       [fieldName]: fieldValue,
@@ -95,6 +98,8 @@ export const TaskDataEntryForm = ({
 
     const isFielddRequiredEmpty =
       fieldErrors.name || fieldErrors.image || fieldErrors.category;
+
+    console.log([...formData.studentInvolved]);
 
     if (!isFielddRequiredEmpty) {
       const newTask: Task = {
@@ -141,129 +146,138 @@ export const TaskDataEntryForm = ({
   };
 
   return (
-    <Modal isOpen={isOpenForm} onClose={handleClose}>
+    <Modal size="xl" isOpen={isOpenForm} onClose={handleClose}>
       <ModalOverlay />
 
-      <ModalContent p={16}>
-        <ModalHeader mx="auto" mb={7}>
-          {titleForm}
-        </ModalHeader>
+      <ModalContent>
+        <ModalHeader p={10}>{titleForm}</ModalHeader>
 
         <ModalCloseButton />
 
-        <Stack spacing={6}>
-          <FormControl isRequired isInvalid={errors.name}>
-            <FormLabel>Task Name</FormLabel>
-            <Input
-              value={formData.name}
-              py={6}
-              px={4}
-              fontSize="sm"
-              type="text"
-              name="name"
-              onChange={handleFieldChange}
-            />
-            <FormErrorMessage color="red">Name is required.</FormErrorMessage>
-          </FormControl>
-
-          <FormControl>
-            <FormLabel>Description</FormLabel>
-            <Textarea
-              value={formData.description}
-              borderRadius="10px"
-              fontSize="sm"
-              name="description"
-              placeholder="Here is a sample placeholder"
-              onChange={handleFieldChange}
-            />
-          </FormControl>
-
-          <FormControl isRequired isInvalid={errors.category}>
-            <FormLabel>Category</FormLabel>
-            <Select
-              isRequired
-              value={formData.category}
-              name="category"
-              fontWeight="base"
-              size="sm"
-              onChange={handleFieldChange}
-            >
-              <option value="default" hidden>
-                Category
-              </option>
-
-              {CATEGORIES.map((category) => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              ))}
-            </Select>
-            <FormErrorMessage color="red">
-              Category is required.
-            </FormErrorMessage>
-          </FormControl>
-
-          <FormControl>
-            <FormLabel>Students</FormLabel>
-            <Select
-              value={formData.studentInvolved}
-              fontWeight="base"
-              size="lg"
-              name="studentInvolved"
-              onChange={handleFieldChange}
-            >
-              <option value="default" hidden>
-                Student
-              </option>
-
-              {OPTIONS.map(({ studentId, name }) => (
-                <option key={studentId} value={name}>
-                  {name}
-                </option>
-              ))}
-            </Select>
-          </FormControl>
-
-          <FormControl>
-            <FormLabel>Due date</FormLabel>
-            <Flex gap={6}>
+        <ModalBody p={10}>
+          <Stack spacing={6}>
+            <FormControl isRequired isInvalid={errors.name}>
+              <FormLabel>Task Name</FormLabel>
               <Input
-                name="dueDate"
-                value={formData.dueDate}
-                px={3}
-                type="date"
-                min={currentDate.slice(0, 10)}
+                borderColor="light.300"
+                value={formData.name}
+                py={6}
+                px={4}
+                fontSize="sm"
+                type="text"
+                name="name"
                 onChange={handleFieldChange}
               />
-              <Input
-                name="dueTime"
-                value={formData.dueTime}
-                type="time"
+              <FormErrorMessage color="red">Name is required.</FormErrorMessage>
+            </FormControl>
+
+            <FormControl>
+              <FormLabel>Description</FormLabel>
+              <Textarea
+                borderColor="light.300"
+                value={formData.description}
+                borderRadius="10px"
+                fontSize="sm"
+                name="description"
+                placeholder="Here is a sample placeholder"
                 onChange={handleFieldChange}
               />
-            </Flex>
-          </FormControl>
+            </FormControl>
 
-          <FormControl isRequired isInvalid={errors.image}>
-            <FormLabel>Image</FormLabel>
-            <Input
-              value={formData.image}
-              py={6}
-              px={4}
-              fontSize="sm"
-              type="text"
-              name="image"
-              onChange={handleFieldChange}
-            />
-            <FormErrorMessage color="red">Image is required.</FormErrorMessage>
-          </FormControl>
-        </Stack>
+            <FormControl isRequired isInvalid={errors.category}>
+              <FormLabel>Category</FormLabel>
+              <Select
+                borderColor="light.300"
+                isRequired
+                value={formData.category}
+                name="category"
+                fontWeight="base"
+                size="sm"
+                onChange={handleFieldChange}
+              >
+                <option value="default" hidden>
+                  Category
+                </option>
 
-        <ModalFooter mt={6}>
+                {CATEGORIES.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </Select>
+              <FormErrorMessage color="red">
+                Category is required.
+              </FormErrorMessage>
+            </FormControl>
+
+            <FormControl>
+              <FormLabel>Students</FormLabel>
+              <Select
+                borderColor="light.300"
+                value={formData.studentInvolved}
+                fontWeight="base"
+                size="lg"
+                name="studentInvolved"
+                onChange={handleFieldChange}
+              >
+                <option value="default" hidden>
+                  Student
+                </option>
+
+                {OPTIONS.map(({ studentId, name }) => (
+                  <option key={studentId} value={name}>
+                    {name}
+                  </option>
+                ))}
+              </Select>
+            </FormControl>
+
+            <FormControl>
+              <FormLabel>Due date</FormLabel>
+              <Flex gap={6}>
+                <Input
+                  borderColor="light.300"
+                  name="dueDate"
+                  value={formData.dueDate}
+                  px={3}
+                  type="date"
+                  min={currentDate.slice(0, 10)}
+                  onChange={handleFieldChange}
+                />
+                <Input
+                  borderColor="light.300"
+                  name="dueTime"
+                  value={formData.dueTime}
+                  type="time"
+                  onChange={handleFieldChange}
+                />
+              </Flex>
+            </FormControl>
+
+            <FormControl isRequired isInvalid={errors.image}>
+              <FormLabel>Image</FormLabel>
+              <Input
+                borderColor="light.300"
+                value={formData.image}
+                py={6}
+                px={4}
+                fontSize="sm"
+                type="text"
+                name="image"
+                onChange={handleFieldChange}
+              />
+              <FormErrorMessage color="red">
+                Image is required.
+              </FormErrorMessage>
+            </FormControl>
+          </Stack>
+        </ModalBody>
+
+        <ModalFooter p={10}>
           <Button
             type="submit"
             py={6}
-            colorScheme="primary"
+            colorScheme="secondary"
             onClick={defaultValues ? handleUpdateTask : handleCreateTask}
           >
             Save

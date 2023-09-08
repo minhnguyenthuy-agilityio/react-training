@@ -31,7 +31,7 @@ export const TaskList = ({ name, tasks }: TaskListProps) => {
         ref.current.scrollWidth
       ) {
         // Reset to the first item
-        ref.current.scrollLeft = 0;
+        ref.current.scrollLeft = 1;
       } else if (ref.current.scrollLeft <= 0) {
         // Scroll to the last item
         ref.current.scrollLeft =

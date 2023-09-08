@@ -136,16 +136,18 @@ export const TableHeader = ({ onSearch }: TableHeaderProps) => {
             onClick={onOpenForm}
             isRound={true}
             variant="solid"
-            colorScheme="primary"
+            colorScheme="secondary"
             aria-label="add task"
             fontSize="20px"
             icon={<AddIcon />}
           />
 
           <Select
+            variant="special"
+            borderColor="light.300"
             size={{ lg: "xs", xl: "md" }}
-            icon={<CategoryIcon />}
             defaultValue="default"
+            icon={<CategoryIcon />}
           >
             <option value="default" hidden>
               Category
@@ -159,10 +161,12 @@ export const TableHeader = ({ onSearch }: TableHeaderProps) => {
           </Select>
 
           <Select
+            borderColor="light.300"
             size={{ lg: "xs", xl: "base" }}
             icon={<FilterIcon />}
             defaultValue="default"
             onChange={handleSort}
+            variant="special"
           >
             <option value="default" hidden>
               Sort by
