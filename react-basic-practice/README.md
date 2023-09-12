@@ -92,7 +92,12 @@
 - Step 3: Checkout to branch develop `git checkout feat/react-basic-practice`
 - Step 4: Go to folder react-basic-practice `cd react-basic-practice`
 
-### 2) Run application
+### 2) Run database
+- Step 1: Go to folder react-basic-practice `cd react-basic-practice`
+- Step 2: Create file .env
+- Step 3: Add line code `VITE_API_BASE_URL="https://64dd7b6e825d19d9bfb12ef3.mockapi.io/" `
+
+### 3) Run application
 
 - Step 1: Install package `pnpm install`
 - Step 2: Run project `pnpm run dev`
