@@ -22,7 +22,7 @@ export const SideBarItem = ({ icon, name, isActive }: SideBarItemProps) => (
     w="full"
   >
     {icon}
-    <Text color="" ml={3}>
+    <Text color="inherit" ml={3}>
       {name}
     </Text>
   </Flex>
